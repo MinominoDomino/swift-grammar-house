@@ -4,6 +4,7 @@
         <page name='Dictionary'/>
         <page name='Array'/>
         <page name='set'/>
+        <page name='enum'/>
         <page name='if'/>
     </pages>
 </playground>

@@ -1,20 +1,17 @@
 import Foundation
-/* Set
- 세트는 같은 타입의 데이터를 하나의 묶음으로 저장하는 컬렉션 타입입니다.
- 키워드는 `Set`를 사용해요
- 세트는 배열과 다르게 축약표현이 없어요 ㅠㅠ
- 
- 엇!? "그럼 배열과 세트는 축약 표현이 없는 것 빼곤 다른게 없는데요??? 왜 따로 써요???" 라고 할 수 있을텐데요
- 세트에서는 **값이 무조건 유일**해야해요.
- 이게 배열과의 가장 큰 차이점이죠!!!
- 
+/* enum
+ 열거형은 연관되어있는 여러 데이터를 하나의 묶음으로 저장하는 컬렉션 타입입니다.
+ 키워드는 `enum`를 사용해요
+ 열거형은 다른 타입들과 다르게 추가/수정이 동적으로 불가능해요.
+ 소스에 선언된 상태로 사용된답니다.
+
  그리고 배열은 데이터의 순서를 보장하지만 세트에서는 데이터의 순서가 랜덤해요.
  예를들어 배열[1, 2, 3]과 세트[1, 2, 3]이 있을때 새로운 값인 4와 5를 추가하면
  배열은 [1, 2, 3, 4, 5]이지만, 세트는 [2, 3, 1, 4, 5]이렇게 랜덤하게 구성됩니다!
  
  이러한 차이점 두개는 세트에서 가장 중요한 내용이에요.
  
-https://developer.apple.com/documentation/swift/set
+ https://developer.apple.com/documentation/swift/set
  */
 
 /* 세트 선언 */
@@ -43,10 +40,10 @@ infinityStone.insert("Mind")
 print(infinityStone)
 
 // -`remove(_:)`는 세트에서 값을 삭제합니다.
-infinityStone.remove("Time")
+infinityStone.insert("Time")
 print(infinityStone)
 
-// -`removeFirst()`는 세트의 가장 첫 번째 값을 삭제합니다.
+// -`remove(_:)`는 세트에서 값을 삭제합니다.
 infinityStone.removeFirst()
 print(infinityStone)
 
