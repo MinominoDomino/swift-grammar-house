@@ -6,5 +6,6 @@
         <page name='set'/>
         <page name='enum'/>
         <page name='ControlFlow'/>
+        <page name='Function'/>
     </pages>
 </playground>
