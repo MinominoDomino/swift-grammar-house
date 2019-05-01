@@ -29,6 +29,7 @@ print(helloMyname(name: "MINOMI"))  //hello, MINOMI
  - 매개변수에 기본값이 있는 함수
  - 매개변수 인자값 생략 함수
  - 매개변수 타입이 집합형인 함수
+ - 매개변수에 in-out키워드 함수
  하나씩 예제를 통해 알아볼게요.
  */
 
@@ -117,6 +118,39 @@ func maxValue(_ values: Int...) -> Int {
     return ret
 }
 print(maxValue(1, 2, 3, 4, 5, 6))   //21
+
+// 매개변수에 in-out키워드 함수
+/*
+ 기본적으로 매개변수로 넘어온 변수값은 함수블록 내부에서 제어할 수 없도록 let으로 할당되어 있습니다.
+ 하지만, 특정 상황에서 매개 변수의 값이 필요할때 `in-out`키워드로 변수의 값을 제어할 수 있습니다.
+ 여기서 `call-by-value`와 `call-by-reference`개념이 나옵니다.
+ 
+ 시작부터 끝까지의 인덱스 만큼 숫자를 순차적으로 더하는 예제입니다.
+ 여기서, 시작의 값을 가진 startNumber의 값은 0 그리고 끝의 값을 가진 endNumber의 값은 3이고
+ maxFromTo3()함수에 매개변수로 0과 3을 가진 변수를 넣어줍니다.
+ 함수 선언에는 end에만 inout키워드가 있고 함수 내부에서 end의 값을 7로 바꿔버립니다.
+ 실행을 해보면 함수매개 변수로는 3을 넘겼지만 블록 내부에서 값이 7로 바뀌고 결과적으로 28이 출력되는 것을 볼 수 있습니다.
+ 왜그런가요??
+ 
+ 기본적으로 매개변수는 call-by-value로 값을 넘기게 되는데 이때는 새로운 메모리에 값을 복사하여 넘겨줍니다.
+ 이유는, inout키워드를 쓰면서 매개변수end가 call-by-refernce로 값을 넘기기 때문입니다.
+ 그래서 함수 호출에 보면 `&`가 붙어 end변수의 주소 자체를 넘기게 되고 함수 내부에서 변수 주소로 직접적으로 바꿔버리게 되죠.
+ 따라서 endNumber변수를 출력하면 3이아닌 7인것을 볼 수 있습니다.
+ */
+func maxFromTo3(start: Int, end: inout Int) -> Int {
+    end = 7 //값 변경
+    var ret: Int = 0
+    for value in start...end {
+        ret += value
+    }
+    return ret
+}
+var startNumber:Int = 0
+var endNumber:Int = 3
+print(maxFromTo3(start: startNumber, end: &endNumber))  //28
+print(endNumber)    //7
+
+
 
 
 
